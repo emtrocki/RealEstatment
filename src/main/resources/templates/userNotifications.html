@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Twoje zgłoszenia:</title>
+</head>
+<body>
+<h1>Poniżej znajdują się wszystkie Twoje zgłoszenia: </h1>
+<ol>
+    <li th:each="notification:${notifications}" th:text="${notification.content}"></li>
+</ol>
+</body>
+</html>

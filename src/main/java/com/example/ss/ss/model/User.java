@@ -16,12 +16,13 @@ public class User {
     private Long id;
     private String firstName;
     private String lastName;
-    @Column(nullable = false)
+    @NotEmpty
     private String email;
-    @Column(nullable = false)
+    @NotEmpty
     private String password;
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<UserRole> roles = new HashSet<>();
+
 
     public Long getId() {
         return id;
