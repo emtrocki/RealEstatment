@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dział zgłoszeń</title>
+</head>
+<body>
+
+<p>Poniżej znajduje się formularz zgłoszeń</p>
+<form action="#" method="post" th:action="@{/saveNotification}" th:object="${notification}">
+    <input th:field="*{content}" placeholder="opis problemu"/><br/>
+    <input type="submit" value="Zgłoś"/>
+</body>
+</html>
