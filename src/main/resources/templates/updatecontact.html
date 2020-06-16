@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zaktualizuj dane</title>
+</head>
+<body>
+
+<p>Lista obecnych kontaktów: </p>
+<tr th:each="contact : ${contacts}">
+    <td th:text="${contact.id}"/>
+    <td th:text="${contact.content}"/>
+    <td>
+        <form th:action="@{deletecontact}" method="post">
+            <input type="hidden" name="id" th:value="${contact.id}"/>
+            <input type="submit" value="usuń" class="btn btn-danger"/>
+        </form>
+    </td>
+</tr>
+</table>
+
+<p>Jeśli chcesz edytować kontakt podaj jego id, jeśli chcesz dodać kontakt pole id pozostaw puste</p>
+<form action="#" method="post" th:action="@{/updatecontact}" th:object="${contact}">
+    <p th:errors="*{id}">id errors</p>
+    <input th:field="*{id}" type="number" placeholder="id"/> jeśli dodajesz nowy kontakt to pole zostaw puste<br/>
+    <input th:field="*{content}" placeholder="Treść"/><br/>
+    <input type="submit" value="dodaj"/>
+
+
+<!--</form>-->
+
+
+
+</body>
+</html>

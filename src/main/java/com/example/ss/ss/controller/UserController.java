@@ -15,7 +15,7 @@ import com.example.ss.ss.service.UserService;
 
 @Controller
 public class UserController {
-
+    @Autowired
     private UserService userService;
 
     @Autowired
@@ -26,17 +26,17 @@ public class UserController {
     @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("user", new User());
-        return "registerForm";
+        return "registerform";
     }
 
     @PostMapping("/register")
     public String addUser(@ModelAttribute @Valid User user,
                           BindingResult bindResult) {
-        if(bindResult.hasErrors())
-            return "registerForm";
+        if (bindResult.hasErrors())
+            return "registerform";
         else {
             userService.addWithDefaultRole(user);
-            return "registerSuccess";
+            return "registersuccess";
         }
     }
 

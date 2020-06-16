@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Kontakt do osób związanych ze wspólnotą:</title>
 </head>
 <body>
+<p>Lista osób związanych ze wspólnotą: </p>
+<li th:each="contact:${contacts}">
+    <span th:text="${contact.content}"></span>
+</li>
 
 </body>
 </html>

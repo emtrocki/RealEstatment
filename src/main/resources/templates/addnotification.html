@@ -7,8 +7,14 @@
 <body>
 
 <p>Poniżej znajduje się formularz zgłoszeń</p>
-<form action="#" method="post" th:action="@{/saveNotification}" th:object="${notification}">
+<form action="#" method="post" th:action="@{/savenotification}" th:object="${notification}">
+    <p th:errors="*{content}">Nic nie wpisałeś</p>
     <input th:field="*{content}" placeholder="opis problemu"/><br/>
     <input type="submit" value="Zgłoś"/>
+</form>
+<br><br>
+    <a href="/usernotifications" >Kliknij tu jeśli chcesz zobaczyć wszystkie swoje zgłoszenia</a>
+
+
 </body>
 </html>

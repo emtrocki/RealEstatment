@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modyfikuj informacje:</title>
+</head>
+<body>
+<h1>Ponizej znajduje sie lista informacji oraz dostępne opcje:</h1>
+
+<tr th:each="info : ${infos}">
+    <td th:text="${info.id}"/>
+    <td th:text="${info.content}"/>
+    <td>
+        <form th:action="@{deleteinfo}" method="post">
+            <input type="hidden" name="id" th:value="${info.id}"/>
+            <input type="submit" value="usuń" class="btn btn-danger"/>
+        </form>
+    </td>
+</tr>
+</table>
+
+<p>Dodaj/Edytuj informacje</p>
+<form action="#" method="post" th:action="@{/updateinfo}" th:object="${info}">
+    <p th:errors="*{id}">id errors</p>
+    <input th:field="*{id}" type="number" placeholder="id"/> jeśli dodajesz nową informację zostaw puste<br/>
+    <input th:field="*{content}" placeholder="Treść"/><br/>
+    <select class="form-control" th:field="*{status}">
+        <option th:value="true">Wyświetlaj</option>
+        <option th:value="false">Nie wyświetlaj</option>
+    </select>
+    <input type="submit" value="dodaj"/>
+</form>
+</body>
+</html>

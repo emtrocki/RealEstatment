@@ -2,6 +2,7 @@ package com.example.ss.ss.model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -9,18 +10,19 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty
     private String content;
     private String email;
     private String anwser;
     private String anwseredBy;
-    private boolean served ;
+    private boolean isServed;
 
-    public boolean isServed() {
-        return served;
+    public boolean isIsServed() {
+        return isServed;
     }
 
-    public void setServed(boolean served) {
-        this.served = served;
+    public void setIsServed(boolean served) {
+        this.isServed = served;
     }
 
     public String getAnwser() {

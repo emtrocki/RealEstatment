@@ -2,12 +2,13 @@
 <html lang="en" xmlns:th="thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Ważne informacje</title>
+    <title>Title</title>
 </head>
 <body>
-
-<h1>Ważne informacje: </h1>
-asdas
-
+<ul>
+    <li th:each="info:${infos}">
+        <span th:text="${info.content}"></span>
+    </li>
+</ul>
 </body>
 </html>

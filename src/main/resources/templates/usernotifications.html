@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Twoje zgłoszenia:</title>
+</head>
+<body>
+<h1>Poniżej znajdują się wszystkie Twoje zgłoszenia: </h1>
+<div th:if="not ${notifications.isEmpty()}">
+    <ol >
+    <li th:each="notification:${notifications}" th:text="${notification.content}"></li>
+    </ol>
+</div>
+<div th:if="${notifications.isEmpty()}">
+    <h3>Do tej pory nic nie zgłosiłeś</h3>
+    <h4> <a href="/mainpage">Możesz powrócić do stony głównej</a></h4>
+    <h4><a href="/support">Bądź wrócić do działu zgłoszeń</a></h4>
+</div>
+
+</body>
+</html>

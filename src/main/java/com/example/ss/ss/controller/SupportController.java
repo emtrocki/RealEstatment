@@ -2,19 +2,19 @@ package com.example.ss.ss.controller;
 
 import com.example.ss.ss.model.Notification;
 import com.example.ss.ss.repository.NotificationRepository;
-import com.example.ss.ss.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import java.util.List;
 
 @Controller
 public class SupportController {
-
+    @Autowired
     private NotificationRepository notificationRepository;
 
     public SupportController(NotificationRepository notificationRepository) {
@@ -24,23 +24,33 @@ public class SupportController {
     @GetMapping("/support")
     public String support(Model model) {
         model.addAttribute("notification", new Notification());
-        return "addNotification";
+        return "addnotification";
     }
 
-
-    @PostMapping("/saveNotification")
+    @PostMapping("/savenotification")
     public String addNotification(Notification notification, Authentication authentication) {
-        notification.setEmail(authentication.getName());
+        if (notification.getContent().isEmpty()) {
+            return "addnotification";
+        } else
+            notification.setEmail(authentication.getName());
         notificationRepository.save(notification);
-        return "notificationSuccess";
+        return "notificationsuccess";
     }
 
-    @GetMapping("/userNotifications")
+    @GetMapping("/usernotifications")
     public String showUserNotifications(Model model, Authentication authentication) {
         List<Notification> allByEmail = notificationRepository.findAllByEmail(authentication.getName());
         model.addAttribute("notifications", allByEmail);
-        return "userNotifications";
+        return "usernotifications";
     }
-    
 
+    @GetMapping("/shownotifications")
+    public String showNotifications(Model model) {
+        model.addAttribute("notifications", notificationRepository);
+        return "notificationstoserve";
+    }
 }
+
+
+
+
