@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodanie płatności</title>
+</head>
+<body>
+<form action="#" method="post" th:action="@{/addpayment}" th:object="${payment}">
+    <input th:field="*{amount}" placeholder="Kwota płatności"/><br/>
+    <input th:field="*{content}" placeholder="Opis płatności"/><br/>
+    <input th:field="*{email}" placeholder="email wpłacającego"/><br/>
+    <input type="submit" value="Dodaj płatność"/>
+</form>
+</body>
+</html>

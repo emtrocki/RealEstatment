@@ -31,7 +31,6 @@ public class InfoController {
 
     @GetMapping("/updateinfo")
     public String modifyInfo(Model model) {
-//        List<Info> infoList = infoRepository.findAll();
         model.addAttribute("infos", infoRepository.findAll());
         model.addAttribute("info", new Info());
         return "updateinfo";

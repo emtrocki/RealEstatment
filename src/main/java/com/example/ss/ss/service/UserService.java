@@ -14,6 +14,7 @@ import com.example.ss.ss.repository.UserRoleRepository;
 public class UserService {
 
     private static final String DEFAULT_ROLE = "ROLE_USER";
+    private static final String ADMIN = "ADMIN";
     private UserRepository userRepository;
     private UserRoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;

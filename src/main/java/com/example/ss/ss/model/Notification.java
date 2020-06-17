@@ -13,33 +13,25 @@ public class Notification {
     @NotEmpty
     private String content;
     private String email;
-    private String anwser;
-    private String anwseredBy;
     private boolean isServed;
+    private String answer;
 
-    public boolean isIsServed() {
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public boolean isServed() {
         return isServed;
     }
 
-    public void setIsServed(boolean served) {
-        this.isServed = served;
+    public void setServed(boolean served) {
+        isServed = served;
     }
 
-    public String getAnwser() {
-        return anwser;
-    }
-
-    public void setAnwser(String anwser) {
-        this.anwser = anwser;
-    }
-
-    public String getAnwseredBy() {
-        return anwseredBy;
-    }
-
-    public void setAnwseredBy(String anwseredBy) {
-        this.anwseredBy = anwseredBy;
-    }
 
     public String getEmail() {
         return email;

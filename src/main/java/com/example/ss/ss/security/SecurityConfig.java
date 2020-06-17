@@ -1,5 +1,6 @@
 package com.example.ss.ss.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,8 +11,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.sql.DataSource;
+
+
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private DataSource dataSource;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -19,15 +26,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return passwordEncoder;
     }
 
+
+
+
+//    @Override
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.jdbcAuthentication().dataSource(dataSource)
+//                .usersByUsernameQuery(
+//                        "select username,password, enabled from user where username=?")
+//                .authoritiesByUsernameQuery(
+//                        "select username, role from user_role where username=?");}
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/register").permitAll()
+                .antMatchers("/updatecontact").hasRole("ADMIN")
+                .antMatchers("/deletecontact").hasRole("ADMIN")
+                .antMatchers("/updateinfo").hasRole("ADMIN")
+                .antMatchers("/deleteinfo").hasRole("ADMIN")
+                .antMatchers("/addpayment").hasRole("ADMIN")
+                .antMatchers("/modifypayment").hasRole("ADMIN")
+                .antMatchers("/deletepayment").hasRole("ADMIN")
+                .antMatchers("/notificationstoserve").hasRole("ADMIN")
+                .antMatchers("/service").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+
         ;
 
     }

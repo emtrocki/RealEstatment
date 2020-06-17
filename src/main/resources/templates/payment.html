@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div th:if="not ${payments.isEmpty()}">
+    <ol>
+        <li th:each="payment:${payments}">
+            <span th:text="${payment.content}"></span>
+            <span th:text="${payment.amount}"></span>
+        </li>
+
+    </ol>
+</div>
+<div th:if="${payments.isEmpty()}">
+    <h3>Do tej pory nic nie wpłaciłeś</h3>
+    <h4><a href="/mainpage">Możesz powrócić do stony głównej</a></h4>
+</div>
 
 </body>
 </html>

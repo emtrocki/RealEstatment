@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Zgłoszenia użytkowników</title>
+</head>
+<body>
+<h1>Poniżej znajdują się zgłoszenia do obsłużenia:</h1>
+
+
+<table>
+<tr th:each="notification : ${notifications}">
+    <td th:text="${notification.id}"/>
+    <td th:text="${notification.content}"/>
+    <td>
+        <form th:action="@{service}" method="post">
+            <input type="hidden" name="id" th:value="${notification.id}"/>
+            <input type="text" name="odpowiedź" th:name="answer"/>
+            <input type="submit" value="odpowiedz" />
+        </form>
+    </td>
+</tr>
+</table>
+
+
+
+</body>
+</html>
