@@ -28,8 +28,8 @@ public class PaymentController {
 
     @GetMapping("/payment")
     public String showPayment(Model model, Authentication authentication) {
-        List<Payment> byEmails = paymentRepository.findAllByEmail(authentication.getName());
-        model.addAttribute("payments", byEmails);
+        List<Payment> byEmail = paymentRepository.findByEmail(authentication.getName());
+        model.addAttribute("payments", byEmail);
         return "payment";
     }
 
