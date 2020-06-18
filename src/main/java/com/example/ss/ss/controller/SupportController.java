@@ -67,7 +67,7 @@ public class SupportController {
             notificationRepository.save(notification);
             return "redirect:/notificationstoserve";
         }
-        return "redirect:/mainpage";
+        return "redirect:/";
 
 
     }

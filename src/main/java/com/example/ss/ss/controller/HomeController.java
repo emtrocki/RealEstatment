@@ -27,7 +27,7 @@ public class HomeController {
 
     @RequestMapping("/mainpage")
     public String mainpage() {
-        return "mainpage";
+        return "redirect/";
 
     }
 

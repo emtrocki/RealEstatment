@@ -50,6 +50,18 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="form-validation.css" rel="stylesheet">
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a href="/" class="navbar-brand col-md-3 col-lg-2 mr-0 px-3">Real Estatment</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+                data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#">Sign out</a>
+            </li>
+        </ul>
+    </nav>
 </head>
 <body class="bg-light">
 <div class="container">
@@ -63,17 +75,20 @@
             <div>
                 <textarea rows="5" cols="10" th:field="*{content}" type="text" class="form-control"
                           placeholder="opis problemu"></textarea>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Wyślij</button>
+                <button class="btn btn-primary  btn-block" type="submit">Wyślij</button>
         </form>
     </div>
 </div>
 
 <br><br>
-<a href="/usernotifications">Kliknij tu jeśli chcesz zobaczyć wszystkie swoje zgłoszenia</a><br>
-<a href="/">Bądź tutaj jeśli chcesz powrócić do strony głównej</a>
+
 
 
 <footer class="my-5 pt-5 text-muted text-center text-small">
+    <ul class="list-inline">
+        <li class="list-inline-item"><a href="/usernotifications">Twoje zgłoszenia</a></li>
+        <li class="list-inline-item"><a href="/">Strona główna</a></li>
+    </ul>
     <p class="mb-1">&copy; 2020 Real Estatment</p>
 </footer>
 </div>

@@ -1,33 +1,138 @@
+</body>
+</html>
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="thymeleaf.org">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Zaktualizuj dane</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>Ważne informacje</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
 </head>
 <body>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a href="/" class="navbar-brand col-md-3 col-lg-2 mr-0 px-3">Real Estatment</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="#">Sign out</a>
+        </li>
+    </ul>
+</nav>
 
-<p>Lista obecnych kontaktów: </p>
-<tr th:each="contact : ${contacts}">
-    <td th:text="${contact.id}"/>
-    <td th:text="${contact.content}"/>
-    <td>
-        <form th:action="@{deletecontact}" method="post">
-            <input type="hidden" name="id" th:value="${contact.id}"/>
-            <input type="submit" value="usuń" class="btn btn-danger"/>
-        </form>
-    </td>
-</tr>
-</table>
 
-<p>Jeśli chcesz edytować kontakt podaj jego id, jeśli chcesz dodać kontakt pole id pozostaw puste</p>
-<form action="#" method="post" th:action="@{/updatecontact}" th:object="${contact}">
-    <p th:errors="*{id}">id errors</p>
-    <input th:field="*{id}" type="number" placeholder="id"/> jeśli dodajesz nowy kontakt to pole zostaw puste<br/>
-    <input th:field="*{content}" placeholder="Treść"/><br/>
-    <input type="submit" value="dodaj"/>
-</form>
+<h2 class="text-center">Kontakt</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-sm" th:each="contact:${contacts}">
+        <thead>
+        <tr class="text-center">
+            <th>Poniżej znajdują się osoby i firmy związane ze wspólnotą</th>
 
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center">
+            <td th:text="${contact.id}"></td>
+        </tr>
+        <tr class="text-center">
+            <td th:text="${contact.content}"></td>
+        </tr>
+        <tr>
+            <td>
+                <form th:action="@{deletecontact}" method="post">
+                    <input type="hidden" name="id" th:value="${contact.id}"/>
+                    <div class="text-center">
+                        <input type="submit" value="usuń" class="btn btn-danger"/></div>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="order-md-2 text-center">
+    <h4 class="mb-3">Podaj dane</h4>
+    <form action="#" method="post" th:action="@{/updatecontact}" th:object="${contact}">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <p th:errors="*{id}">id kontaktu</p>
+                <label for="id">Id kontaktu</label>
+                <input type="number" th:field="*{id}" class="form-control" id="id" placeholder="Id kontaktu">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="tresc">Opis kontaktu</label>
+                <input th:field="*{content}" type="text" class="form-control" id="tresc" placeholder="Wstaw informacje">
+            </div>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" value="Register" type="submit">Dodaj płatność</button>
+    </form>
+</div>
+</main>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+<script src="../assets/dist/js/bootstrap.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>
 
 
 </body>
 </html>
+
+
