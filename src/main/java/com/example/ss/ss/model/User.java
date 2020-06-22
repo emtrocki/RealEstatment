@@ -2,9 +2,7 @@ package com.example.ss.ss.model;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.*;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 

@@ -1,10 +1,8 @@
 package com.example.ss.ss.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.example.ss.ss.model.User;
 import com.example.ss.ss.model.UserRole;
 import com.example.ss.ss.repository.UserRepository;

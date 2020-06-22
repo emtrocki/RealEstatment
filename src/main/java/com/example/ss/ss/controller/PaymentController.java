@@ -1,6 +1,5 @@
 package com.example.ss.ss.controller;
 
-
 import com.example.ss.ss.model.Payment;
 import com.example.ss.ss.repository.PaymentRepository;
 import org.springframework.security.core.Authentication;

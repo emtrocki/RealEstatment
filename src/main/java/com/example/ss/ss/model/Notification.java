@@ -1,6 +1,5 @@
 package com.example.ss.ss.model;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
